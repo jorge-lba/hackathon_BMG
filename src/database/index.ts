@@ -49,6 +49,10 @@ export default class User{
         
     }
 
+    public listAll(){
+        return this.database.get('user').value()
+    }
+
     public openAccount(){
         this.database.get('user').push({
             name:this.name,

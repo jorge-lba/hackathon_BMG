@@ -5,7 +5,8 @@ import { create } from 'domain'
 export default {
     async index( request:Request, response:Response ){
         return response.json({
-            message:'Olá !!'
+            message:'Olá !!',
+            response: new User('All').listAll()
         })
     },   
 
