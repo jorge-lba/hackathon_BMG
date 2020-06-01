@@ -7,8 +7,9 @@ const routes = express.Router()
 
 routes.get('/', UserController.list )
 
-routes.get('/users/:name', UserController.index)
+routes.get('/users/:user', UserController.index)
 routes.post('/users', UserController.create)
+routes.put('/users', UserController.addObjective)
 
 
 export default routes
