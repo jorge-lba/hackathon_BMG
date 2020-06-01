@@ -1,14 +1,22 @@
 import {Request, Response} from 'express'
 import User from '../database/index'
-import { create } from 'domain'
 
 export default {
-    async index( request:Request, response:Response ){
+    async list( request:Request, response:Response ){
+        const name = request.params.name
+
         return response.json({
-            message:'Olá !!',
-            response: new User('All').listAll()
+            message:'Busca efetuada com sucesso.',
+            response: new User(name).getAccount()
         })
     },   
+
+    async index(request:Request, response:Response){
+        return response.json({
+            message:'Contas abertas no sistema.',
+            response: new User('All').listAll()
+        })
+    },
 
     async create( request:Request, response:Response ){
         const name = request.body.name
