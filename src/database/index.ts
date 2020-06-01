@@ -14,7 +14,7 @@ database.defaults({
   }).write()
 
 type TypeGoal = {
-    date:Date
+    date:string
     amount:number
 }
 
@@ -79,6 +79,18 @@ export default class User{
         
         return this.database.get('user').find({name:this.name}).value()
     }
+
+    public addGoal(goal:TypeGoal){
+        const data = this.database.get('user').find({name:this.name})
+        const response = data.value()
+        response.objective.goals.push(goal)
+        
+        data.assign(response).write()
+        
+        return this.database.get('user').find({name:this.name}).value()
+    }
+
+
     
 }
 

@@ -51,8 +51,24 @@ export default {
         })
 
         return response.json({
-            message:'Busca efetuada com sucesso.',
+            message:'Objetivo adcionado com sucesso.',
             response: account.getAccount()
         })
-    }
+    },
+
+    async addGoal(request:Request, response:Response){
+        const { user, amount } = request.body
+
+        const account = new User(user)
+ 
+        account.addGoal({
+            date: Date(),
+            amount
+        })
+
+        return response.json({
+            message:`Valor de R$${amount} adcionado com sucesso.`,
+            response: account.getAccount()
+        })
+    },
 }
