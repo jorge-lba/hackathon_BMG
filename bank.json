@@ -1,3 +1,31 @@
 {
-
+  "user": [
+    {
+      "name": "José",
+      "agency": "0001",
+      "account": "12345-67",
+      "type": "c/c",
+      "available_limit": 0,
+      "investment": 0,
+      "objective": [
+        {
+          "name": "CNH",
+          "type": "Documento",
+          "totalAmount": 2000,
+          "startDate": "Sun May 31 2020 22:07:23 GMT-0300 (Brasilia Standard Time)",
+          "endDate": "20/11/2020",
+          "goals": [
+            {
+              "date": "Sun May 31 2020 22:17:25 GMT-0300 (Brasilia Standard Time)",
+              "amount": 150
+            },
+            {
+              "date": "Sun May 31 2020 22:17:30 GMT-0300 (Brasilia Standard Time)",
+              "amount": 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

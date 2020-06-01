@@ -83,8 +83,16 @@ export default class User{
 
     public addGoal(goal:TypeGoal, objective:string){
         const data = this.database.get('user').find({name:this.name})
-        const response = data.value()
-        response.objective.find({name:objective}).goals.push(goal)
+        const response:any = data.value()
+        let index:number = 0
+        const object = response.objective.filter((item:any, i:any) => {
+            if(item.name === objective){
+                index = i
+                return true
+            }
+        })
+
+        if(object) response.objective[index].goals.push(goal)
         
         data.assign(response).write()
         

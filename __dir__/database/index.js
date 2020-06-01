@@ -45,7 +45,15 @@ var User = /** @class */ (function () {
     User.prototype.addGoal = function (goal, objective) {
         var data = this.database.get('user').find({ name: this.name });
         var response = data.value();
-        response.objective.find({ name: objective }).goals.push(goal);
+        var index = 0;
+        var object = response.objective.filter(function (item, i) {
+            if (item.name === objective) {
+                index = i;
+                return true;
+            }
+        });
+        if (object)
+            response.objective[index].goals.push(goal);
         data.assign(response).write();
         return this.database.get('user').find({ name: this.name }).value();
     };
