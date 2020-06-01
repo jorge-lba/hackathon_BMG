@@ -13,6 +13,7 @@ export default {
 
     async index(request:Request, response:Response){
         const user = request.params.user
+
         return response.json({
             message:'Contas abertas no sistema.',
             response: new User(user).listAll()
