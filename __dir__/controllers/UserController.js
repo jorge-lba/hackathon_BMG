@@ -41,26 +41,61 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = __importDefault(require("../database/index"));
 exports.default = {
+    list: function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var user;
+            return __generator(this, function (_a) {
+                user = request.params.user;
+                return [2 /*return*/, response.json({
+                        message: 'Busca efetuada com sucesso.',
+                        response: new index_1.default(user).getAccount()
+                    })];
+            });
+        });
+    },
     index: function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
+            var user;
             return __generator(this, function (_a) {
+                user = request.params.user;
                 return [2 /*return*/, response.json({
-                        message: 'Olá !!',
-                        response: new index_1.default('All').listAll()
+                        message: 'Contas abertas no sistema.',
+                        response: new index_1.default(user).listAll()
                     })];
             });
         });
     },
     create: function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, user, result;
+            var user, account, result;
             return __generator(this, function (_a) {
-                name = request.body.name;
-                user = new index_1.default(name);
-                result = user.openAccount();
+                user = request.body.user;
+                account = new index_1.default(user);
+                result = account.openAccount();
                 return [2 /*return*/, response.json({
                         message: "Parabens, você acabou de abrir uma conta no meu_BMG",
                         response: result
+                    })];
+            });
+        });
+    },
+    addObjective: function (request, response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, user, name, type, totalAmount, endDate, account;
+            return __generator(this, function (_b) {
+                _a = request.body.name, user = _a.user, name = _a.name, type = _a.type, totalAmount = _a.totalAmount, endDate = _a.endDate;
+                account = new index_1.default(user);
+                account.addObjective({
+                    name: name,
+                    type: type,
+                    totalAmount: totalAmount,
+                    startDate: Date(),
+                    endDate: endDate,
+                    goals: []
+                });
+                return [2 /*return*/, response.json({
+                        message: 'Busca efetuada com sucesso.',
+                        response: account.getAccount()
                     })];
             });
         });
