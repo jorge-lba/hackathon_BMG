@@ -43,12 +43,10 @@ var index_1 = __importDefault(require("../database/index"));
 exports.default = {
     list: function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var user;
             return __generator(this, function (_a) {
-                user = request.params.user;
                 return [2 /*return*/, response.json({
                         message: 'Busca efetuada com sucesso.',
-                        response: new index_1.default(user).getAccount()
+                        response: new index_1.default("user").listAll()
                     })];
             });
         });
@@ -60,7 +58,7 @@ exports.default = {
                 user = request.params.user;
                 return [2 /*return*/, response.json({
                         message: 'Contas abertas no sistema.',
-                        response: new index_1.default(user).listAll()
+                        response: new index_1.default(user).getAccount()
                     })];
             });
         });
@@ -83,7 +81,7 @@ exports.default = {
         return __awaiter(this, void 0, void 0, function () {
             var _a, user, name, type, totalAmount, endDate, account;
             return __generator(this, function (_b) {
-                _a = request.body.name, user = _a.user, name = _a.name, type = _a.type, totalAmount = _a.totalAmount, endDate = _a.endDate;
+                _a = request.body, user = _a.user, name = _a.name, type = _a.type, totalAmount = _a.totalAmount, endDate = _a.endDate;
                 account = new index_1.default(user);
                 account.addObjective({
                     name: name,

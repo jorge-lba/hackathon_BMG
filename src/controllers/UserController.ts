@@ -3,11 +3,9 @@ import User from '../database/index'
 
 export default {
     async list( request:Request, response:Response ){
-        const user = request.params.user
-
         return response.json({
             message:'Busca efetuada com sucesso.',
-            response: new User(user).getAccount()
+            response: new User("user").listAll()
         })
     },   
 
@@ -16,7 +14,7 @@ export default {
 
         return response.json({
             message:'Contas abertas no sistema.',
-            response: new User(user).listAll()
+            response: new User(user).getAccount()
         })
     },
 
@@ -39,10 +37,10 @@ export default {
             type,
             totalAmount,
             endDate,
-        } = request.body.name
+        } = request.body
 
         const account = new User(user)
-
+ 
         account.addObjective({
             name,
             type,
