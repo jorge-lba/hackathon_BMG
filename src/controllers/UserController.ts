@@ -57,14 +57,14 @@ export default {
     },
 
     async addGoal(request:Request, response:Response){
-        const { user, amount } = request.body
+        const { user,objective, amount } = request.body
 
         const account = new User(user)
  
         account.addGoal({
             date: Date(),
             amount
-        })
+        }, objective)
 
         return response.json({
             message:`Valor de R$${amount} adcionado com sucesso.`,

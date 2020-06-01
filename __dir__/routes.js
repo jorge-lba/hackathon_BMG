@@ -9,6 +9,6 @@ var routes = express_1.default.Router();
 routes.get('/', UserController_1.default.list);
 routes.post('/users', UserController_1.default.create);
 routes.put('/users/:user', UserController_1.default.index);
-routes.post('/users', UserController_1.default.addObjective);
+routes.post('/users/objectives', UserController_1.default.addObjective);
 routes.post('/users/goals', UserController_1.default.addGoal);
 exports.default = routes;

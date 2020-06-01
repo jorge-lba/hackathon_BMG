@@ -100,14 +100,14 @@ exports.default = {
     },
     addGoal: function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, user, amount, account;
+            var _a, user, objective, amount, account;
             return __generator(this, function (_b) {
-                _a = request.body, user = _a.user, amount = _a.amount;
+                _a = request.body, user = _a.user, objective = _a.objective, amount = _a.amount;
                 account = new index_1.default(user);
                 account.addGoal({
                     date: Date(),
                     amount: amount
-                });
+                }, objective);
                 return [2 /*return*/, response.json({
                         message: "Valor de R$" + amount + " adcionado com sucesso.",
                         response: account.getAccount()

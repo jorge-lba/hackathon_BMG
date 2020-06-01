@@ -1,5 +1,6 @@
 import lowdb = require("lowdb");
 import FileSync = require("lowdb/adapters/FileSync");
+import { strict } from "assert";
 
 // .. other code here ..
 
@@ -80,10 +81,10 @@ export default class User{
         return this.database.get('user').find({name:this.name}).value()
     }
 
-    public addGoal(goal:TypeGoal){
+    public addGoal(goal:TypeGoal, objective:string){
         const data = this.database.get('user').find({name:this.name})
         const response = data.value()
-        response.objective.goals.push(goal)
+        response.objective.find({name:objective}).goals.push(goal)
         
         data.assign(response).write()
         

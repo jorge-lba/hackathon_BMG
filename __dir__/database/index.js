@@ -42,10 +42,10 @@ var User = /** @class */ (function () {
         data.assign(response).write();
         return this.database.get('user').find({ name: this.name }).value();
     };
-    User.prototype.addGoal = function (goal) {
+    User.prototype.addGoal = function (goal, objective) {
         var data = this.database.get('user').find({ name: this.name });
         var response = data.value();
-        response.objective.goals.push(goal);
+        response.objective.find({ name: objective }).goals.push(goal);
         data.assign(response).write();
         return this.database.get('user').find({ name: this.name }).value();
     };
