@@ -42,6 +42,13 @@ var User = /** @class */ (function () {
         data.assign(response).write();
         return this.database.get('user').find({ name: this.name }).value();
     };
+    User.prototype.addGoal = function (goal) {
+        var data = this.database.get('user').find({ name: this.name });
+        var response = data.value();
+        response.objective.goals.push(goal);
+        data.assign(response).write();
+        return this.database.get('user').find({ name: this.name }).value();
+    };
     return User;
 }());
 exports.default = User;

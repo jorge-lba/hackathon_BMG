@@ -9,8 +9,8 @@ routes.get('/', UserController.list )
 
 routes.post('/users', UserController.create)
 routes.put('/users/:user', UserController.index)
-routes.put('/users', UserController.addObjective)
-routes.put('/users/goals', UserController.addGoal)
+routes.post('/users', UserController.addObjective)
+routes.post('/users/goals', UserController.addGoal)
 
 
 export default routes
